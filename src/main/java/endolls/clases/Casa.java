@@ -14,12 +14,15 @@ public class Casa {
     private ArrayList<Placas> placas = new ArrayList<>();
     private ArrayList<Aparato> aparatos = new ArrayList<>();
     
+    
+    //Constructor.
     public Casa(String nif, String nombre, Integer superficie){
         this.nif = nif;
         this.nombre = nombre;
         this.superficie = superficie;
     }
     
+    //Getters principales.
     public String getNif(){
         return this.nif;
     }
@@ -35,20 +38,20 @@ public class Casa {
     public boolean getInterruptor(){
         return this.interruptor;
     }
-    
+    //Cambiamos el interruptor general al valor introducido (true o false).
     public void setInterruptor(boolean interruptor){
         this.interruptor = interruptor;
     }
-    
+    //Metodo que registra una placa solar en el ArrayList de la casa.
     public void setPlaca(Integer longitud, float precio, Integer potencia){
         Placas nueva = new Placas(longitud, precio, potencia);
         placas.add(nueva);
     }  
-    
+    //Getter que nos muestra el número de placas registradas.
     public Integer getPlacas(){
         return placas.size();
     }
-    
+    //Metodo que calcula la superficie que ocupan todas las placas.
     public Integer getRestante(){
         Integer suma = 0;
         for(Placas laplaca : placas){
@@ -56,7 +59,7 @@ public class Casa {
         }
         return suma;
     }
-    
+    //Metodo que obtiene y devuelve la potencia de todas las placas solares.
     public Integer getEnergia(){
         Integer suma = 0;
         for(Placas laplaca : placas){
@@ -64,16 +67,16 @@ public class Casa {
         }
         return suma;
     }
-    
+    //Metodo que añade un aparato en el ArrayList de la casa.
     public void setAparell(String descripcion,Integer consumo){
         Aparato nuevo = new Aparato(descripcion,consumo);
         aparatos.add(nuevo);
     }
-    
+    //Getter para obtener el número de aparatos registrados.
     public Integer getAparells(){
         return aparatos.size();
     }
-    
+    //Metodo que devuelve el gasto de los aparatos encendidos.
     public Integer getGasto(){
         Integer suma = 0;
         for(Aparato elaparato : aparatos){
@@ -83,7 +86,7 @@ public class Casa {
         }
         return suma;
     }
-   
+   //Metodo que comprueba el estado del interruptor de un aparato (Encendido o apagado).
    public Integer getAparellEstado(boolean estado, String desc){
        for(Aparato elaparato : aparatos){
            if(elaparato.getEstado() == estado && elaparato.getDescripcion().equals(desc)){
@@ -93,9 +96,9 @@ public class Casa {
                //Si el estado del aparato es diferente al valor booleano, devolvemos 2.
                return 2;
            }
-       } return 3;
+       } return 3; //Si no encuentra el aparato devolvemos 3.
     }
-   
+   //Comprueba el estado del interruptor del aparato y lo cambia al contrario.
    public void setAparellEstado(String desc){
        for(Aparato elaparato : aparatos){
            if(elaparato.getDescripcion().equals(desc)){
@@ -107,13 +110,13 @@ public class Casa {
            }
        }
    }
-   
+   //Metodo para apagar todos los aparatos (Usado para cuando saltan los plomos).
    public void setOffPlomos(){
        for(Aparato elaparato : aparatos){
            elaparato.setOff();
        }
    }
-    
+    //Metodo que devuelve el precio total de todas las placas.
     public float getInversion(){
         float suma = 0;
         for(Placas laplaca : placas){
@@ -121,7 +124,7 @@ public class Casa {
         }
         return suma;
     }
-    
+    //Comprueba que la descripción del aparato esté dentro del ArrayList de la casa.
     public boolean getAparell(String desc){
         for(Aparato elaparato : aparatos){
             if(elaparato.getDescripcion().equals(desc)){
